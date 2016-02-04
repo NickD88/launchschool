@@ -1,9 +1,9 @@
 ###Write pseudo-code for:
 
 ####A method that returns the sum of two integers
--Define a method that takes two arguments
--return the sum of the two arguments
--call the method with two numbers as arguments
++ Define a method that takes two arguments
++ Return the sum of the two arguments
++ Call the method with two numbers as arguments
 
 
 ###A method that takes an array of strings, and returns a string that is all those strings concatenated together
@@ -12,7 +12,7 @@
 
 
 ###A method that takes an array of integers, and returns a new array with every other element
--Iterate through the array of integers
--select the even array indices
-  -could push the even indices into a new array if needed
+- Iterate through the array of integers
+- select the even array indices
+  - could push the even indices into a new array if needed
 - return the even array indices
