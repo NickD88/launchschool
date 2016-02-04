@@ -1,6 +1,6 @@
-##Write pseudo-code for:
+###Write pseudo-code for:
 
-###A method that returns the sum of two integers
+####A method that returns the sum of two integers
 -Define a method that takes two arguments
 -return the sum of the two arguments
 -call the method with two numbers as arguments
