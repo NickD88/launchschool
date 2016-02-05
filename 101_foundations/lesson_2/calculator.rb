@@ -7,7 +7,7 @@ require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 LANGUAGE = 'en'
 
-def messages(lan=LANGUAGE, message)
+def messages(message, lan = LANGUAGE)
   MESSAGES[lan][message]
 end
 
@@ -77,14 +77,14 @@ loop do
     end
   end
 
-# refactored to add language options in MESSAGES file
-#  operator_prompt = <<-MSG
-#    What operation would you like to perform?
-#    1) add
-#    2) subtract
-#    3) multiply
-#    4) divide
-#  MSG
+  # refactored to add language options in MESSAGES file
+  #  operator_prompt = <<-MSG
+  #  What operation would you like to perform?
+  #  1) add
+  #  2) subtract
+  #  3) multiply
+  #  4) divide
+  #  MSG
 
   prompt('operations')
 
