@@ -1,0 +1,9 @@
+en:
+  welcome: "Welcome to the mortgage calculator."
+  get_loan_amount: "Please enter the loan amount. (example: enter 50000 for $50,000 loan)"
+  get_apr: "Please enter the loan APR percentage."
+  get_years: "Please enter the number of years for the loan term."
+  invalid_entry: "=> Invalid Entry."
+  run_again: "\nWould you like to enter anther loan?"
+  y_n_input: "Enter Y to enter a new loan or N to quit"
+  goodbye: "Thank you for using the mortgage calculator"
