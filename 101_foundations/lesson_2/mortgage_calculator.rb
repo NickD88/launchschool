@@ -47,7 +47,6 @@ loop do
     prompt("invalid_entry")
   end
 
-  # perform calculations
   term_months = term_years.to_i * 12
   anual_interest = loan_apr.to_f / 100
   monthly_interest = anual_interest/ 12
@@ -56,14 +55,12 @@ loop do
                     ((1 + monthly_interest)**term_months - 1)
   total_cost = monthly_payment * term_months
 
-  # display results
   results("The monthly payment amount is: $#{monthly_payment.round(2)}")
   results("The total number of monthly payments to be made is #{term_months}")
   results("The total cost of the loan is: $#{total_cost.round(2)}")
   sleep 1
 
   prompt('run_again')
-  prompt('y_n_input')
   keep_running = gets.chop
   break unless keep_running.downcase.start_with?('y')
 end
