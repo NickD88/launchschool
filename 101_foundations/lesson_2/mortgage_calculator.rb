@@ -13,8 +13,7 @@ def prompt(key)
 end
 
 def valid_number(num)
-  num.to_s.to_i == num || num.to_f.to_i == num
-  num.to_f > 0
+  num.empty? == false && num.to_f > 0
 end
 
 prompt('welcome')
