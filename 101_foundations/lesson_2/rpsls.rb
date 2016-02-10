@@ -19,7 +19,7 @@ def letter_abreviation(letter)
 end
 
 def prompt(message)
-  puts("=> #{message}")
+  puts("#{message}")
 end
 
 def win?(first, second)
@@ -31,6 +31,7 @@ def win?(first, second)
 end
 
 def display_results(player, computer)
+  prompt('')
   prompt("You choose #{player} and the computer chose #{computer}")
   if win?(player, computer)
     prompt("*** You won this round! ***")
@@ -98,7 +99,7 @@ loop do
     choice = ''
     loop do
       choice = gets.chomp
-      
+
       break if VALID_CHOICES.include?(letter_abreviation(choice))
       prompt("That is not a valid choice.  Please try again.")
     end
