@@ -1,5 +1,13 @@
 VALID_CHOICES = %w(rock paper scissors lizard spock).freeze
 
+score_round = {'player': 0, 'computer': 0, 'round': 1}
+
+def score_reset(item)
+  item[:player] = 0
+  item[:computer] = 0
+  item[:round] = 1
+end
+
 def letter_abreviation(letter)
   case letter
   when 'r' then 'rock'
@@ -11,7 +19,7 @@ def letter_abreviation(letter)
 end
 
 def prompt(message)
-  puts("--> #{message}")
+  puts("=> #{message}")
 end
 
 def win?(first, second)
@@ -23,6 +31,7 @@ def win?(first, second)
 end
 
 def display_results(player, computer)
+  prompt("You choose #{player} and the computer chose #{computer}")
   if win?(player, computer)
     prompt("*** You won this round! ***")
   elsif win?(computer, player)
@@ -32,78 +41,84 @@ def display_results(player, computer)
   end
 end
 
-def check_for_winner(player, computer)
-  player >= 5 || computer >= 5
+def check_for_winner(hash, user, comp)
+  hash[user] >= 5 || hash[comp] >= 5
 end
 
-def display_winner(player, computer)
-  if player == 5
+def display_winner(hash, user, comp)
+  if hash[user] == 5
     prompt("You won the game!")
-  elsif computer == 5
+  elsif hash[comp] == 5
     prompt("Sorry, you lost.  The computer won the game!")
   end
 end
 
-def display_welcome
-  prompt("Welcome to Rock, Paper, Scissors, Lizard, Spock")
-  prompt("The match is first to 5 wins.")
-end
+def display_instructions(round, player, computer)
+  puts(<<-EOT.gsub(/^ {2}/, ''))
+  Welcome to Rock, Paper, Scissors, Lizard, Spock
+  The match is first to 5 wins.
 
-def display_instructions(round)
-  puts('')
-  prompt("Round #{round}.  Choose one:")
-  prompt("'r' for rock")
-  prompt("'p' for paper")
-  prompt("'sc' for scissors")
-  prompt("'l' for lizard")
-  prompt("'sp' for spock")
+  ** Your score is #{player} and the computer's score is #{computer} **
+
+  Round #{round}.  Choose one:
+    'r' for rock
+    'p' for paper
+    'sc' for scissors
+    'l' for lizard
+    'sp' for spock
+  EOT
 end
 
 def play_again?
   prompt("Do you want to play again? (y) to play again")
-  gets.chomp.downcase.start_with?('y')
+  gets.chomp.start_with?('y', 'Y')
+end
+
+def clear_screen
+  system("clear") || system("cls")
+end
+
+def increment_score(scoreboard, user, comp, user_score, comp_score)
+  scoreboard[user] += 1 if win?(user_score, comp_score)
+  scoreboard[comp] += 1 if win?(comp_score, user_score)
+end
+
+def increment_round(scoreboard, round_num)
+  scoreboard[round_num] += 1
+  prompt("Get ready for round #{scoreboard[round_num]}!")
+  sleep 3
+  clear_screen
 end
 
 loop do
-  player_score = 0
-  computer_score = 0
-  round = 1
-  display_welcome
+  score_reset(score_round)
+  clear_screen
   loop do
-    display_instructions(round)
+    display_instructions(score_round[:round], score_round[:player], score_round[:computer])
     choice = ''
     loop do
       choice = gets.chomp
-
-      if VALID_CHOICES.include?(letter_abreviation(choice))
-        break
-      else
-        prompt("That is not a valid choice.  Please try again.")
-      end
+      
+      break if VALID_CHOICES.include?(letter_abreviation(choice))
+      prompt("That is not a valid choice.  Please try again.")
     end
 
     computer_choice = VALID_CHOICES.sample
 
     user_choice = letter_abreviation(choice)
 
-    prompt("You choose #{user_choice} and the computer chose #{computer_choice}")
-
     display_results(user_choice, computer_choice)
 
-    player_score += 1 if win?(user_choice, computer_choice)
-    computer_score += 1 if win?(computer_choice, user_choice)
+    increment_score(score_round, :player, :computer, user_choice, computer_choice)
 
-    prompt("Your score is #{player_score} and the computer's score is #{computer_score}")
+    break if check_for_winner(score_round, :player, :computer)
 
-    break if check_for_winner(player_score, computer_score)
-
-    round += 1
-    prompt("Get ready for round #{round}!")
-    sleep 1
+    increment_round(score_round, :round)
   end
 
-  display_winner(player_score, computer_score)
+  display_winner(score_round, :player, :computer)
   break unless play_again?
+  clear_screen
 end
 
 prompt("Thank you for playing!")
