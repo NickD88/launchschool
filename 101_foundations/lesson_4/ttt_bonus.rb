@@ -6,8 +6,11 @@ COMPUTER_MARKER = 'O'.freeze
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] +
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] +
                 [[1, 5, 9], [3, 5, 7]].freeze
+PLAYER_NAME = 'Player'.freeze
+COMPUTER_NAME = 'Computer'.freeze
 
 score = { player: 0, computer: 0 }
+current_player = PLAYER_NAME
 
 def prompt(message)
   puts "=>#{message}"
@@ -28,7 +31,18 @@ The input rules are: 1|2|3
 You are #{PLAYER_MARKER}'s.  Computer is #{COMPUTER_MARKER}'s
 
 ** Your score is #{hash[usr]} and the computer's score is #{hash[comp]} **
+
 MSG
+end
+
+def display_who_goes_first(player, brd)
+  if detect_winner(brd) == PLAYER_NAME
+    puts "#{COMPUTER_NAME} lost and will go first next round"
+  elsif detect_winner(brd) == COMPUTER_NAME
+    puts "#{PLAYER_NAME} lost and will go first next time"
+  else
+    puts "It was a tie.  #{player} will go first this time."
+  end
 end
 
 def display_board(brd)
@@ -86,55 +100,74 @@ end
 def detect_winner(brd)
   WINNING_LINES.each do |line|
     if brd.values_at(*line).count(PLAYER_MARKER) == 3
-      return 'Player'
+      return PLAYER_NAME
     elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
-      return 'Computer'
+      return COMPUTER_NAME
     end
   end
   nil
 end
 
 def increment_score(scoreboard, brd)
-  scoreboard[:player] += 1 if detect_winner(brd) == 'Player'
-  scoreboard[:computer] += 1 if detect_winner(brd) == 'Computer'
+  scoreboard[:player] += 1 if detect_winner(brd) == PLAYER_NAME
+  scoreboard[:computer] += 1 if detect_winner(brd) == COMPUTER_NAME
 end
 
-def computer_defense!(brd, line)
-  if brd.values_at(*line).count(PLAYER_MARKER) == 2
-    brd.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+def ai_logic(brd, symbol)
+  square = nil
+  WINNING_LINES .each do |line|
+    if brd.values_at(*line).count(symbol) == 2
+      square = brd.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+      break
+    end
   end
+  square
 end
 
-def computer_offense!(brd, line)
-  if brd.values_at(*line).count(COMPUTER_MARKER) == 2
-    brd.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+def computer_defense!(brd)
+  symbol = PLAYER_MARKER
+  ai_logic(brd, symbol)
+end
+
+def computer_offense!(brd)
+  symbol = COMPUTER_MARKER
+  ai_logic(brd, symbol)
+end
+
+def center_square_open?(brd)
+  if brd[5] == INITIAL_MARKER
+    5
   end
 end
 
 def computer_places_piece!(brd)
-  square = if brd[5] == INITIAL_MARKER
-             5
-           end
-
-  if !square
-    WINNING_LINES.each do |line|
-      square = computer_offense!(brd, line)
-      break if square
-    end
-  end
-
-  if !square
-    WINNING_LINES.each do |line|
-      square = computer_defense!(brd, line)
-      break if square
-    end
-  end
-
-  if !square
-    square = empty_squares(brd).sample
-  end
-
+  square = center_square_open?(brd)
+  square = computer_offense!(brd) unless square
+  square = computer_defense!(brd) unless square
+  square = empty_squares(brd).sample unless square
   brd[square] = COMPUTER_MARKER
+end
+
+def alternate_player(player)
+  player == PLAYER_NAME ? COMPUTER_NAME : PLAYER_NAME
+end
+
+def place_piece!(brd, player)
+  player_places_piece!(brd) if player == PLAYER_NAME
+  computer_places_piece!(brd) if player == COMPUTER_NAME
+end
+
+def display_winning_message(brd)
+  if someone_won?(brd)
+    puts "#{detect_winner(brd)} won!"
+  else
+    puts "It's a tie!"
+  end
+end
+
+def play_again?
+  prompt "Play Again? (y) to play another round"
+  gets.chomp.start_with?('y', 'Y')
 end
 
 loop do
@@ -142,25 +175,19 @@ loop do
   loop do
     display_heading(score, :player, :computer)
     display_board(board)
-    player_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
-    computer_places_piece!(board)
+    place_piece!(board, current_player)
+    current_player = alternate_player(current_player)
     break if someone_won?(board) || board_full?(board)
   end
 
   increment_score(score, board)
   display_heading(score, :player, :computer)
+  display_who_goes_first(current_player, board)
   display_board(board)
 
-  if someone_won?(board)
-    prompt "#{detect_winner(board)} won!"
-  else
-    prompt "It's a tie!"
-  end
+  display_winning_message(board)
 
-  prompt "Play Again? (y) to play another round"
-  answer = gets.chomp
-  break unless answer.start_with?('y', 'Y')
+  break unless play_again?
 end
 
 prompt "Thank you for playing!"
