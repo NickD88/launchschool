@@ -1,5 +1,3 @@
-require 'pry'
-
 INITIAL_MARKER = ' '.freeze
 PLAYER_MARKER = 'X'.freeze
 COMPUTER_MARKER = 'O'.freeze
@@ -16,7 +14,7 @@ def prompt(message)
   puts "=>#{message}"
 end
 
-def display_heading(hash, usr, comp)
+def display_heading(scoreboard)
   system("clear") || system("cls")
   puts(<<-MSG)
 
@@ -30,7 +28,7 @@ The input rules are: 1|2|3
 
 You are #{PLAYER_MARKER}'s.  Computer is #{COMPUTER_MARKER}'s
 
-** Your score is #{hash[usr]} and the computer's score is #{hash[comp]} **
+** Your score is #{scoreboard[:player]} and the computer's score is #{scoreboard[:computer]} **
 
 MSG
 end
@@ -73,7 +71,7 @@ def empty_squares(brd)
   brd.keys.select { |num| brd[num] == INITIAL_MARKER }
 end
 
-def display_joiner(arr, seperator, last_seperator='or')
+def display_available(arr, seperator, last_seperator='or')
   arr[-1] = "#{last_seperator} #{arr[-1]}" if arr.size > 1
   prompt "Choose a square #{arr.join(seperator)}"
 end
@@ -81,7 +79,7 @@ end
 def player_places_piece!(brd)
   square = ''
   loop do
-    display_joiner(empty_squares(brd), ",")
+    display_available(empty_squares(brd), ",")
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
     prompt "Sorry, that is not a valid choice"
@@ -115,9 +113,9 @@ end
 
 def ai_logic(brd, symbol)
   square = nil
-  WINNING_LINES .each do |line|
+  WINNING_LINES.each do |line|
     if brd.values_at(*line).count(symbol) == 2
-      square = brd.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+      square = brd.select { |space, value| line.include?(space) && value == INITIAL_MARKER }.keys.first
       break
     end
   end
@@ -125,23 +123,19 @@ def ai_logic(brd, symbol)
 end
 
 def computer_defense!(brd)
-  symbol = PLAYER_MARKER
-  ai_logic(brd, symbol)
+  ai_logic(brd, PLAYER_MARKER)
 end
 
 def computer_offense!(brd)
-  symbol = COMPUTER_MARKER
-  ai_logic(brd, symbol)
+  ai_logic(brd, COMPUTER_MARKER)
 end
 
 def center_square_open?(brd)
-  if brd[5] == INITIAL_MARKER
-    5
-  end
+  brd[5] == INITIAL_MARKER
 end
 
 def computer_places_piece!(brd)
-  square = center_square_open?(brd)
+  square = 5 if center_square_open?(brd)
   square = computer_offense!(brd) unless square
   square = computer_defense!(brd) unless square
   square = empty_squares(brd).sample unless square
@@ -173,7 +167,7 @@ end
 loop do
   board = initialize_board
   loop do
-    display_heading(score, :player, :computer)
+    display_heading(score)
     display_board(board)
     place_piece!(board, current_player)
     current_player = alternate_player(current_player)
@@ -181,7 +175,7 @@ loop do
   end
 
   increment_score(score, board)
-  display_heading(score, :player, :computer)
+  display_heading(score)
   display_who_goes_first(current_player, board)
   display_board(board)
 
