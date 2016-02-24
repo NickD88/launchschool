@@ -128,14 +128,6 @@ def dealer_round(deck, score_board, player, dealer)
   end
 end
 
-def player_score(hand)
-  calculate_hand_value(hand)
-end
-
-def dealer_score(hand)
-  calculate_hand_value(hand)
-end
-
 def game_round(deck, score_board, player, dealer)
   loop do
     player_round(deck, score_board, player, dealer)
@@ -215,6 +207,7 @@ loop do
       game_round(game_deck, score, player_hand, dealer_hand)
       calculate_winner(calculate_hand_value(player_hand),
                        calculate_hand_value(dealer_hand), score)
+
       break if check_for_winner(score)
       ready_next_round
     end
