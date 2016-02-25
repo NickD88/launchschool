@@ -94,7 +94,7 @@ end
 def player_round(deck, score_board, player, dealer)
   loop do
     break if busted?(player) || hit_blackjack?(player)
-    puts "Would you like to hit or stay? (s) to stay or (h) to hit"
+    puts "Would you like to hit or stay? (s) to stay or any key to hit"
     break if gets.chomp.start_with?('s', 'S')
     player << deal_card(deck)
     display_game(player, dealer, score_board, true)
@@ -221,7 +221,7 @@ loop do
   dealer_hand = []
   loop do
     if game_deck.length < 8
-      puts "\nNeed to re-shuffle deck"
+      puts "\nNot enough cards for a round.  Shuffling deck"
       game_deck = initialize_deck
     else
       player_hand = initial_deal(game_deck)
