@@ -1,7 +1,7 @@
-            Pet |
+                    Pet |
             ------------ |
-            run |
-            jump |
+                    run |
+                    jump |
 
             Cat | Dog
 ------------ | -------------
@@ -9,6 +9,6 @@ speak | swim
  | speak
  | fetch
 
-  | Bulldog
+       | Bulldog
 ------------ | -------------
- | swim
+       | swim
