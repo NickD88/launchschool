@@ -9,6 +9,6 @@ speak | swim
  | speak
  | fetch
 
-       | Bulldog
+  ------   | Bulldog
 ------------ | -------------
-       | swim
+   ------     | swim
