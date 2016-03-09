@@ -1,16 +1,16 @@
 
 
-                        | Pet |
-                        |---  |
-                        |-run	|
-                        |-jump|
+                            | Pet |
+                            |:---  |
+                            |-run	|
+                            |-jump|
 
-                        |Cat   	|Dog   	|
-                        |:-:	|---	|
-                        |-speak   	|-speak   	|
-                        |   	|-swim   	|
-                        |   	|-fetch   	|
+                        |Cat  	|Dog   	|
+                        |:---	 |:---	|
+                        |-speak|-speak   	|
+                        |   	 |-swim   	|
+                        |   	 |-fetch   	|
 
-                              |Bulldog   	|
-                              |---	|
-                              |-swim   	|
+                                |Bulldog   	|
+                                |:---	|
+                                |-swim   	|
