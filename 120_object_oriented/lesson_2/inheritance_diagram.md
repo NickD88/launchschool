@@ -1,19 +1,14 @@
-Pet |
------------- |
-run |
-jump |
+            Pet |
+            ------------ |
+            run |
+            jump |
 
-                            | Pet |
-                            |:---  |
-                            |-run	|
-                            |-jump|
+            Cat | Dog
+------------ | -------------
+speak | swim
+ | speak
+ | fetch
 
-                        |Cat  	|Dog   	|
-                        |:---	 |:---	|
-                        |-speak|-speak   	|
-                        |   	 |-swim   	|
-                        |   	 |-fetch   	|
-
-                                |Bulldog   	|
-                                |:---	|
-                                |-swim   	|
+  | Bulldog
+------------ | -------------
+ | swim
