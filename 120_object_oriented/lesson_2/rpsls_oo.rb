@@ -48,16 +48,6 @@ class Spock < Move
   end
 end
 
-class Score
-  def initialize(score)
-    @score = score
-  end
-
-  def increment_score
-    self.score += 1
-  end
-end
-
 class Player
   attr_accessor :move, :name, :score, :choice_counter
 
