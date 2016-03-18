@@ -1,4 +1,3 @@
-require 'pry'
 
 class Move
   attr_reader :beats, :value
@@ -55,7 +54,6 @@ class Player
     @move = nil
     @score = 0
     @choice_counter = {}
-    set_name
   end
 
   def convert_class(choice)
@@ -67,18 +65,14 @@ class Player
     when 'spock' then Spock.new
     end
   end
-
-  def increment(choice)
-    if choice_counter.include?(choice)
-      choice_counter[choice] += 1
-    else
-      choice_counter[choice] = 1
-    end
-  end
 end
 
-
 class Human < Player
+  def initialize
+    super
+    set_name
+  end
+
   def set_name
     system("clear") || system("cls")
     player_name = ""
@@ -100,33 +94,154 @@ class Human < Player
       break if Move::VALUES.include? choice
       puts "Sorry, invalid choice."
     end
-    increment(choice)
     self.move = convert_class(choice)
   end
 end
 
-class Computer < Player
-  def set_name
-    self.name = ['R2D2', 'Hal', 'Chappie', 'Sonny', 'Number 5'].sample
+class Opponent
+  def self.display_opponents
+    system("clear")
+    puts <<~EOF
+      Choose an opponent:
+      1. Dracula
+      2. Frankenstein
+      3. Swamp Thing
+      4. Yeti
+
+      Please enter 1, 2, 3 or 4.
+      You can also enter 't' to see each monster's favorite moves.
+    EOF
+  end
+
+  def self.choice_to_opponent(selection)
+    case selection
+    when '1' then Dracula.new
+    when '2' then Frankenstein.new
+    when '3' then SwampThing.new
+    when '4' then Yeti.new
+    when 't' then display_tendencies
+    end
+  end
+
+  def self.opponents_tendencies
+    puts <<~EOF
+      Below are the tendencies for each of the opponents.
+      1. #{Dracula.tendency}
+      2. #{Frankenstein.tendency}
+      3. #{SwampThing.tendency}
+      4. #{Yeti.tendency}
+
+      Press return/enter to return to the opponent selection screen.
+    EOF
+  end
+
+  def self.display_tendencies
+    loop do
+      system("clear")
+      opponents_tendencies
+      answer = gets.chomp
+      break if answer
+    end
+  end
+end
+
+class Dracula < Player
+  def initialize
+    super
+    @name = 'Dracula'
+    @available_moves = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+  end
+
+  def choose
+    @available_moves.rotate!
+    self.move = convert_class(@available_moves.last)
+  end
+
+  def self.tendency
+    "Dracula likes order and chooses his moves in the order the game is named after."
+  end
+end
+
+class Frankenstein < Player
+  def initialize
+    super
+    @name = 'Frankenstein'
   end
 
   def choose
     self.move = convert_class(Move::VALUES.sample)
+  end
+
+  def self.tendency
+    "Frankenstein doesn't like to think...so he keeps it random."
+  end
+end
+
+class SwampThing < Player
+  def initialize
+    super
+    @name = 'Swamp Thing'
+  end
+
+  def choose
+    self.move = Lizard.new
+  end
+
+  def self.tendency
+    "Swamp Thing loves his lizards!"
+  end
+end
+
+class Yeti < Player
+  def initialize
+    super
+    @name = 'Yeti'
+  end
+
+  def choose
+    self.move = case rand(1..100)
+                when (1..50) then Rock.new
+                when (51..60) then Paper.new
+                when (61..65) then Scissors.new
+                when (66..75) then Lizard.new
+                when (76..100) then Spock.new
+                end
+  end
+
+  def self.tendency
+    "Yet likes to throw rocks and spocks more often then not."
   end
 end
 
 class RPSGame
   attr_accessor :human, :computer, :history, :round
 
+  WINNING_SCORE = 5
+  OPPONENT_CHOICES = ['1', '2', '3', '4'].freeze
+
   def initialize
     @human = Human.new
-    @computer = Computer.new
+    @computer = choose_opponent
     @round = 1
-    @history = {}
+    @history = Hash.new
   end
 
   def clear_screen
     system("clear") || system("cls")
+  end
+
+  def choose_opponent
+    clear_screen
+    selection = nil
+    loop do
+      Opponent.display_opponents
+      selection = gets.chomp
+      break if OPPONENT_CHOICES.include? selection
+      puts "Please enter 1, 2, 3, 4"
+      Opponent.choice_to_opponent(selection) if selection.casecmp('t') == 0
+      sleep 0.5
+    end
+    Opponent.choice_to_opponent(selection)
   end
 
   def display_header_message
@@ -170,13 +285,13 @@ class RPSGame
   end
 
   def display_goodbye_message
-    puts "Thanks for playing!"
+    puts "\npaThanks for playing!"
   end
 
   def display_match_end(winner)
     clear_screen
     display_header_message
-    puts "#{winner.name} won the match!"
+    puts "#{winner.name} won the match!\n"
   end
 
   def determine_winner
@@ -196,14 +311,14 @@ class RPSGame
   end
 
   def update_history
-    case determine_winner
-    when human
-      history[round] = [human.name, human.move.to_s, computer.move.to_s]
-    when computer
-      history[round] = [computer.name, computer.move.to_s, human.move.to_s]
-    else
-      history[round] = ['tied', human.move.to_s]
-    end
+    history[round] = case determine_winner
+                     when human
+                       [human.name, human.move.to_s, computer.move.to_s]
+                     when computer
+                       [computer.name, computer.move.to_s, human.move.to_s]
+                     else
+                       ['tied', human.move.to_s]
+                     end
   end
 
   def display_history
@@ -217,11 +332,6 @@ class RPSGame
     end
   end
 
-  def update_choices
-    human.choice_counter(human.move.to_s)
-    computer.choice_counter(computer.move.to_s)
-  end
-
   def increment_score
     case determine_winner
     when human
@@ -230,6 +340,11 @@ class RPSGame
       computer.score += 1
     end
     self.round += 1
+  end
+
+  def make_choices
+    human.choose
+    computer.choose
   end
 
   def round_end_updating
@@ -241,33 +356,36 @@ class RPSGame
   def play_again?
     answer = nil
     loop do
-      puts "Would you like to play again? (y/n)"
+      puts "\nWould you like to play again? (y/n)"
       answer = gets.chomp
       break if ['y', 'n'].include? answer.downcase
       puts "Sorry, must be y or n"
     end
+    clear_statistics
     answer.casecmp('y') == 0
   end
 
   def winning_score?
-    human.score == 5 || computer.score == 5
+    human.score == WINNING_SCORE || computer.score == WINNING_SCORE
   end
 
   def match_winner
-    return human if human.score == 5
-    return computer if computer.score == 5
+    return human if human.score == WINNING_SCORE
+    return computer if computer.score == WINNING_SCORE
   end
 
-  def choose_weapon
-    human.choose
-    computer.choose
+  def clear_statistics
+    human.score = 0
+    @round = 1
+    @history = Hash.new
+    @computer = choose_opponent
   end
 
   def play
     loop do
       loop do
         display_header_message
-        choose_weapon
+        make_choices
         round_end_updating
         break if winning_score?
         display_next_round
