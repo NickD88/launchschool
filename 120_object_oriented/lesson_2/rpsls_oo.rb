@@ -48,12 +48,11 @@ class Spock < Move
 end
 
 class Player
-  attr_accessor :move, :name, :score, :choice_counter
+  attr_accessor :move, :name, :score
 
   def initialize
     @move = nil
     @score = 0
-    @choice_counter = {}
   end
 
   def convert_class(choice)
@@ -264,7 +263,7 @@ class RPSGame
   end
 
   def display_score
-    "#{human.name}: #{human.score}    ||    #{computer.name}: #{computer.score}"
+    "#{human.name}: #{human.score}    vs    #{computer.name}: #{computer.score}"
   end
 
   def display_results
@@ -285,7 +284,7 @@ class RPSGame
   end
 
   def display_goodbye_message
-    puts "\npaThanks for playing!"
+    puts "Thanks for playing!"
   end
 
   def display_match_end(winner)
@@ -332,7 +331,7 @@ class RPSGame
     end
   end
 
-  def increment_score
+  def increment_score_round
     case determine_winner
     when human
       human.score += 1
@@ -349,7 +348,7 @@ class RPSGame
 
   def round_end_updating
     update_history
-    increment_score
+    increment_score_round
     display_results
   end
 
@@ -361,7 +360,6 @@ class RPSGame
       break if ['y', 'n'].include? answer.downcase
       puts "Sorry, must be y or n"
     end
-    clear_statistics
     answer.casecmp('y') == 0
   end
 
@@ -393,6 +391,7 @@ class RPSGame
       display_match_end(match_winner)
       display_history
       break unless play_again?
+      clear_statistics
     end
     display_goodbye_message
   end
