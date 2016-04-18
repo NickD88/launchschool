@@ -67,9 +67,9 @@ class Board
     markers.uniq.size == 1
   end
 
-  def two_matching_markers?(squares, markers)
+  def two_matching_markers?(squares, marker)
     squares.count { |square| square.marker == Square::INITIAL_MARKER } == 1 &&
-      squares.count { |square| square.marker == markers } == 2
+      squares.count { |square| square.marker == marker } == 2
   end
 
   def find_line_only_empty(squares)
@@ -130,7 +130,6 @@ class Player
   attr_reader :marker, :name
 
   def initialize(type)
-    @type = type
     @name = set_name
     @marker = set_marker
     @score = 0
@@ -156,36 +155,34 @@ class Player
     loop do
       marker = gets.chomp
       break if marker.length == 1
-      puts "Please enter a valid one character marker"
+      puts "Please enter a valid one character marker."
     end
 
     marker
   end
+end
 
-  def player_type
-    return :human if @type == :human
-    return :computer if @type == :computer
-  end
-
+class Human < Player
   def prompt_set_name
-    case player_type
-    when :human
-      puts "Please enter your name."
-    when :computer
-      clear
-      puts "Please enter the computer's name"
-    end
+    puts "Please enter your name."
   end
 
   def prompt_set_marker
-    case player_type
-    when :human
-      clear
-      puts "Welcome #{name}! Please choose your single character marker."
-    when :computer
-      clear
-      puts "Please choose a single character marker for #{name}"
-    end
+    clear
+    puts "Welcome #{name}! Please choose your single character marker."
+  end
+end
+
+
+class Computer < Player
+  def prompt_set_name
+    clear
+    puts "Please enter the computer's name."
+  end
+
+  def prompt_set_marker
+    clear
+    puts "Please choose a single character marker for #{name}"
   end
 end
 
@@ -202,8 +199,8 @@ class TTTGame
   def initialize
     display_welcome_message
     @board = Board.new
-    @human = Player.new(:human)
-    @computer = Player.new(:computer)
+    @human = Human.new(:human)
+    @computer = Computer.new(:computer)
     @current_marker = FIRST_TO_MOVE
   end
 
