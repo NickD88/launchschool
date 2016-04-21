@@ -67,7 +67,6 @@ class Participant
 end
 
 class Player < Participant
-
   def initialize
     super
     @name = set_name
