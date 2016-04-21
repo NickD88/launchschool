@@ -270,6 +270,7 @@ class TwentyOneGame
   end
 
   def dealer_turn
+    clear_screen
     dealer.reveal_cards
     display_game
     while dealer.calculate_hand_value < DEALER_STAYS
@@ -321,7 +322,7 @@ class TwentyOneGame
   end
 
   def reset_cards
-    self.deck = Deck.new if deck.cards.length < 12
+    self.deck = Deck.new if deck.cards.length < 10
     player.hand = []
     dealer.hand = []
     dealer.card_score_hidden = true
