@@ -271,7 +271,6 @@ class TwentyOneGame
   end
 
   def dealer_turn
-    clear_screen
     dealer.reveal_cards
     display_game
     while dealer.calculate_hand_value < DEALER_STAYS
@@ -289,7 +288,7 @@ class TwentyOneGame
     dealer.calculate_hand_value > player.calculate_hand_value
   end
 
-  def tied_round
+  def tied_round?
     dealer.calculate_hand_value == player.calculate_hand_value
   end
 
@@ -318,7 +317,7 @@ class TwentyOneGame
   end
 
   def display_results
-    return puts "It's a tie" if tied_round
+    return puts "It's a tie" if tied_round?
     display_winning(determine_winner)
   end
 
