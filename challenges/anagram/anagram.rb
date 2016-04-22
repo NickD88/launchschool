@@ -17,7 +17,7 @@ class Anagram
   end
 
   def different?(string)
-    initial_str.downcase != string.downcase
+    initial_str.casecmp(string) != 0
   end
 
   def anagram?(test_str)
