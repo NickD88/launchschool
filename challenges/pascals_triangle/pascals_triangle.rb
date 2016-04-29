@@ -4,14 +4,11 @@ class Triangle
   end
 
   def rows
-    return [[1]] if @num_rows == 1
-    final_triangle = [[1]]
-    current_row = [1]
+    triangle = [[1]]
     (@num_rows - 1).times do
-      current_row = create_row(current_row)
-      final_triangle << current_row
+      triangle << create_row(triangle.last)
     end
-    final_triangle
+    triangle
   end
 
   def create_row(array)
