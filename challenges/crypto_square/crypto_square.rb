@@ -17,6 +17,16 @@ class Crypto
     normalized.scan(/.{1,#{size}}/)
   end
 
+  def ciphertext
+    create_cipher.flatten.join
+  end
+
+  def normalize_ciphertext
+    create_cipher.map { |row| row.join('') }.join(' ')
+  end
+
+  private
+
   def create_cipher
     cipher = []
     plaintext_segments.each(&:split).each do |row|
@@ -26,14 +36,6 @@ class Crypto
       end
     end
     cipher
-  end
-
-  def ciphertext
-    create_cipher.flatten.join
-  end
-
-  def normalize_ciphertext
-    create_cipher.map { |row| row.join('') }.join(' ')
   end
 
   def find_perfect(square)
