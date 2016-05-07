@@ -22,7 +22,7 @@ class Crypto
   end
 
   def normalize_ciphertext
-    create_cipher.map { |row| row.join('') }.join(' ')
+    create_cipher.map(&:join).join(' ')
   end
 
   private
