@@ -4,7 +4,7 @@
 class Palindromes
   attr_reader :max, :min
 
-  def initialize(factors)
+  def initialize(facchtors)
     @max = factors[:max_factor]
     @min = factors[:min_factor] || 1
     @palindrome = []
