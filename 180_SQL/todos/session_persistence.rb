@@ -1,3 +1,4 @@
+require "pg"
 class SessionPersistence
 
   def initialize(session)
