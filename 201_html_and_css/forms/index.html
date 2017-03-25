@@ -1,58 +1,63 @@
 <!doctype html>
-<html>
-	<head>
-		<title>Form Exercises</title>
-		<meta charset="UTF-8" />
-	</head>
-	<body>
-		<h2>Exercise 1</h2>
-		<form action="" method="post">
-			<fieldset>
-				<dl>
-					<dt>Your Name</dt>
-					<dd><input type="text" name="name" required /></dd>
-					<dt>Email</dt>
-					<dd><input type="text" name="email" required /></dd>
-					<dt>Phone Number</dt>
-					<dd><input type="text" name="phone_number" required /></dd>
-					<dt>Message</dt>
-					<dd><textarea name="message" id="" cols="30" rows="5"></textarea></dd>
-				</dl>
-				<button type="submit">Send Message</button>
-				<button type="Reset">Clear</button>
-			</fieldset>
-		</form>
+<html lang="en-US">
+  <header>
+    <title>Form Exercises</title>
+    <meta charset="UTF-8">
+  </header>
+  <body>
+    <!-- Exercise 1 -->
+    <form action="" method="post">
+      <fieldset>
+        <dl>
+          <dt><label for="name">Your Namae</label></dt>
+          <dd><input type="text" name="name" id="name" required></input></dd>
+          <dt><label for="email">Email</label></dt>
+          <dd><input type="email" name="email" id="email" required></dd>
+          <dt><label for="phone">Phone Number</label></dt>
+          <dd><input type="tel" name="phone" id="phone" required</dd>
+          <dd><label for="Message">Message</label></dd>
+          <dd><textarea rows="6" cols="80" name="message" id="message" required></textarea></dd>
+        </dl>
+        <input type="submit" value="send Message">
+        <input type="reset" value="Clear">
+      </fieldset>
+    </form>
+    <br>
 
-		<h2>Exercise 2</h2>
-		<form action="" method="post">
-			<fieldset>
-				<label for="search_field">Search for:</label>
-				<input type="text" name="search_fileld">
-				<label><input type="radio" name="media_type" value="TV" />TV</label>
-				<label><input type="radio" name="media_type" value="Movies" /> Movies</label>
-				<label><input type="radio" name="media_type" value="Music" /> Music</label>
-				<button type="submit">Search</button>
-			</fieldset>
-		</form>
-
-		<h2>Exercise 3</h2>
-		<form action="" method="submit">
-			<fieldset>
-				<dl>
-					<dt>Movie</dt>
-					<dd><select name="movies" id="">
-						<option value="Looper">Looper</option>
-						<option value="Frozen">Frozen</option>
-						<option value="Tommy_Boy">Tommy Boy</option>
-					</select></dd>
-					<dt>Raiting</dt>
-					<dl><input type="range" name="raiting" min="1" max="5"></dl>
-				</dl>
-				<div>
-					<label><input type="checkbox" name="add_favorite" checked />Add to my Favorites</label>
-				</div>
-				<input type="submit" value="Rate movie" />
-			</fieldset>
-		</form>
-	</body>
+    <!-- Exercise 2 -->
+    <form action="" mehthod="get">
+      <fieldset>
+        <label for="query">Search for</label></dt>
+        <input type="text" name="query" id="query"></input>
+        <label><input type="radio" name="filter" id="tv" value="tv">TV</label>
+        <label><input type="radio" name="filter" id="movies" value="movies">Movies</label>
+        <label><input type="radio" name="filter" id="Music" value="music">Music</label>
+        <input type="button" value="Search">
+      </fieldset>
+    </form>
+    <br>
+    
+    <!-- Exercise 3 -->
+    <form action="" method="post">
+      <fieldset>
+        <dl>
+          <dt><label for="movie">Movie</label></dt>
+          <dd>
+            <select name="movie" id="movie">
+              <option value="Looper">Looper</option>
+              <option value="Frozen">Frozen</option>
+              <option value="Tommy Boy">Tommy Boy</option>
+            </select>
+          </dd>
+          <dt><label for="raiting">Raiting</label></dt>
+          <dd><input type="range" name="raiting" min="1" max="5" value="3"></dd>
+        </dl>
+        <div>
+          <input type="checkbox" name="favorite" checked="checked">
+          <label for="cbox">Add to favorites</label>
+        </div>
+        <input type="button" value="Rate movie">
+      </fieldset>
+    </form>
+  </body>
 </html>
