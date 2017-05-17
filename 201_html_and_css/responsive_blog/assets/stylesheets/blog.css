@@ -1,0 +1,322 @@
+@import "reset.css";
+
+body {
+  font: normal 20px Helvetica, Arial, sans-serif;
+  color: #45494d;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background: #3d3d3d;
+  padding: 150px 0 0 0;
+}
+
+header h1 {
+  font-size: 68px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 25px;
+  text-transform: uppercase;
+}
+
+header img {
+  display: block;
+  padding: 50px 0 100px 0;
+  margin: 0 auto;
+}
+
+nav ul {
+  text-align: center;
+  padding: 35px 0;
+}
+
+nav li {
+  display: inline-block;
+  padding: 0 30px;
+}
+
+nav a {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #fff;
+}
+
+nav a.active {
+  color: #50c3af;
+}
+
+main, footer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+main {
+  overflow: hidden;
+  padding: 100px 0 90px 0;
+}
+
+main:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+div {
+  display: block;
+}
+
+
+#content {
+  overflow: hidden;
+  float: left;
+  width: 65%;
+  padding: 0 10% 0 0;
+}
+
+#sidebar {
+  overflow: hidden;
+  padding: 40px;
+  background: rgba(210, 213, 218, .2);
+  height: 100%;
+}
+
+article, 
+section {
+  padding: 0 0 100px 0;
+  width: 100%;
+}
+
+
+article h2,
+section h2,
+form h2 {
+  font-weight: bold;
+  font-size: 32px;
+  padding: 0 0 32px 0;
+}
+
+article h2 a {
+  color: inherit;
+}
+
+article h2 a:hover,
+article h3 a {
+  color: #50c3af;
+}
+
+article h3 {
+  padding: 0 0 38px 0;
+}
+
+#sidebar h4 {
+  color: #384048;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 36px 0;
+}
+
+#sidebar ul {
+  padding: 0 0 120px 20px;
+}
+
+#sidebar li {
+  padding: 0 0 5px 0;
+  list-style: url("../images/arrow.png");
+}
+
+#sidebar a, 
+#sidebar p {
+  font-size: 14px;
+  color: #787b80;
+}
+
+.button {
+  display: inline-block;
+  margin-right: 30px;
+  padding: 10px 30px;
+  background: #50c3af;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #f5f5f5;
+  border: none;
+}
+
+.button.disabled {
+  background: #d2d5da;
+  cursor: default;
+}
+
+.comment {
+  padding: 0 0 90px 0;
+}
+
+.comment article {
+  padding: 0 0 40px 0;
+}
+
+.comment img {
+  margin: 0 10px 0 0;
+}
+
+.comment h3 {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 0 40px 0;
+}
+
+section article:last-of-type {
+  padding: 0;
+}
+
+form dt {
+  padding: 0 0 5px 0;
+  cursor: normal;
+  font-weight: bold;
+}
+
+form dd {
+  padding: 0 0 15px 0;
+}
+
+form dd input[type="text"],
+form dd input[type="email"],
+textarea {
+  font: normal 15px Helvetica, Arial, sans-serif;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form label {
+
+}
+
+footer {
+  border-top: 1px solid #d0d0d0;
+  padding: 20px 0 50px 0;
+  font-size: 12px;
+  color: #7e8287;
+}
+
+@media (max-width: 768px) {
+  
+  header {
+    padding: 50px 0 0 0;
+  }
+
+  header h1 {
+    font-size: 48px;
+    letter-spacing: 20px;
+  }
+
+  nav li {
+    padding: 0 20px;
+  }
+
+  main {
+    padding: 50px 0;
+  }
+
+  #sidebar {
+    padding: 20px;
+  }
+
+
+}
+
+@media (max-width: 583px) {
+
+  header h1 {
+    font-size: 36px;
+    letter-spacing: 10px;
+  }
+  
+  header img {
+    max-width: 90%;
+    padding: 50px 25px 0;
+  }
+
+  nav li {
+    width: 49%;
+    padding: 10px 0;
+  }
+
+  #content {
+    float: none;
+    width: initial;
+    padding: 20px;
+  }
+
+  #sidebar > div {
+    float: left;
+    width: 50%;
+  }
+  #sidebar ul {
+    padding: 0 0 0 20px;
+  }
+
+  article h2,
+  form h2 {
+    font-size: 28px;
+  }
+
+  article p,
+  article h3 {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 380px) {
+
+  header img {
+    padding: 20px 0 10px 0;
+  }
+
+  nav ul {
+    padding: 20px 0;
+  }
+
+  nav li {
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+
+  article h2 {
+    font-size: 24px;
+  }
+
+  article h3,
+  article p {
+    font-size: 16px;
+  }
+
+  #sidebar {
+    padding: 0 20px;
+    background: transparent;
+  }
+
+  #sidebar > div {
+    float: none;
+    width: auto;
+    padding: 20px;
+    background: rgba(210, 213, 218, .2);
+    margin: 0 0 20px 0;
+  }
+
+  #sidebar h4 {
+    padding: 0 0 30px 0;
+  }
+
+
+}

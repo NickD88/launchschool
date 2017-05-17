@@ -1,0 +1,149 @@
+@import "whitespace-reset.css";
+
+h1 {
+  font-size: 2.5em;
+  margin: 0 0 25px 0;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0 0 25px 0;
+}
+
+h3 {
+  font-size: 1.75em;
+  margin: 0 0 20px 0;
+}
+
+h4 {
+  font-size: 1.5em;
+  margin: 0 0 20px 0;
+}
+
+.copy p {
+  margin: 0 0 20px 0;
+  font-size: 1em;
+  line-height: 150%;
+}
+
+.copy ul {
+  list-style: disc;
+  padding: 0 0 20px 25px;
+}
+
+.copy ol {
+  list-style: decimal;
+  padding: 0 0 20px 25px;
+}
+
+.copy ul  ul {
+  padding: 20px 0 20px 18px;
+  list-style: circle;
+}
+
+.copy ol ol {
+  padding: 20px 0 20px 18px;
+  list-style: lower-latin;
+}
+
+.copy ol.roman {
+  padding: 0 0 20px 25px;
+  list-style: upper-roman;
+}
+
+.copy ol.roman ol {
+  padding: 20px 0 20px 18px;
+  list-style: lower-roman;
+}
+
+    /*****COLUMNS*****/
+
+
+.row {
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+}
+
+.row:after {
+  display: block;
+  content: "";
+  clear: both;
+  line-height: 0;
+}
+
+.half,
+.third,
+.fourth, 
+.sixth,
+.two_third,
+.five_sixth {
+  box-sizing: border-box;
+  float: left;
+}
+
+.half {
+  width: 50%;
+}
+
+.third {
+  width: 33.3%;
+}
+
+.fourth {
+  width: 25%;
+}
+
+.sixth {
+  width: 16.66%;
+}
+
+.two_third {
+  width: 66.6%;
+}
+
+.five_sixth {
+  width: 83.3%;
+}
+
+.margin_row .half,
+.margin_row .third,
+.margin_row .fourth,
+.margin_row .sixth,
+.margin_row .two_third,
+.margin_row .five-sixth {
+  margin-right: 2%;
+}
+
+.margin_row .half:last-child,
+.margin_row .third:last-child,
+.margin_row .fourth:last-child,
+.margin_row .sixth:last-child,
+.margin_row .two_third:last-child,
+.margin_row .five-sixth:last-child {
+  margin-right: 0;
+}
+
+
+.margin_row .half {
+  width: 49%;
+}
+
+.margin_row .third {
+  width: 32%;
+}
+
+.margin_row .fourth {
+  width: 23.5%;
+}
+
+.margin_row .sixth {
+  width: 15%;
+}
+
+.margin_row .two_third {
+  width: 66%;
+}
+
+.margin_row .five_sixth {
+  width: 83%;
+}

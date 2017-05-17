@@ -1,0 +1,21 @@
+#content,
+#sidebar {
+  padding: 20px 30px;
+}
+
+#content {
+  float: left;
+  width: 70%;
+  box-sizing: border-box;
+  background: blue;
+}
+
+#sidebar {
+  overflow: hidden;
+  background: orange;
+}
+
+main {
+  min-width: 600px;
+  max-width: 1400px;
+}

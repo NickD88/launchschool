@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Form Layout Exercises</title>
+    <meta charset="UTF-8">
+    <style>
+
+      input[type="text"]:focus {
+        outline-width: 0;
+      }
+
+     
+      
+      .styled_form {
+        padding: 25px;
+        border: 2px solid #6A91BB;
+        background: #E8E8E8;
+      }
+
+      .styled_form  label {
+        display: block;
+        font-weight: bold;
+        margin: 0;
+        padding-bottom: 10px;
+      }
+
+      .styled_form  input[type="text"] {
+        width: 100%;
+        padding: 5px 8px;
+        border-radius: 4px;
+        font: normal 14px Helvetica, Arial, sans-serif;
+        border: 1px solid #084EC6;
+        height: 40px;
+        box-sizing: border-box;
+      }
+
+      .styled_form  input[type="text"] + input[type="text"] {
+        margin-top: 20px;
+      }
+
+      /***EXERCISE 2***/
+      
+      .styled_form.horizontal dt,
+      .styled_form.horizontal dd {
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+        margin: 0;
+      }
+
+      .styled_form.horizontal dt {
+        width: 25%;
+        padding-right: 20px;
+      }
+      
+      .styled_form.horizontal dd {
+        width: 75%;
+      }
+
+      .styled_form.horizontal input[type="text"],
+      .styled_form.horizontal input[type="select"] {
+        width: 100%;
+      }
+
+      dd {
+        margin: 0;
+      }
+
+      dl.partial {
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      dl.city {
+        width: 45%;
+        margin-right: 20px;
+      }
+
+      dl.zipcode {
+        width: 30%;
+      }
+
+      dl.state {
+        width: 20%;
+        margin-right: 20px;
+      }
+
+      dl.state select {
+        height: 40px;
+        width: 100%;
+        padding: 0 8px;
+        background: white;
+        border: 1px solid #cecece;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <h1>Top Bottom Layout</h1>
+    <div class="styled_form">
+      <label for="example_1">Example top to bottom layout</label>
+      <input type="text" name="example_1" id="example_1">
+    </div>
+
+    <h1>Horizontal Layout</h1>
+    <div class="styled_form horizontal">
+      <label for="example_2">Example horizontal layout</label>
+      <input type="text" name="example_2" id="example_2">
+    </div>
+
+    <h1>Horizantal Layout - Two Inputs</h1>
+    <div class="styled_form horizontal">
+      <dl>
+        <dt>
+          <label for="example3_inp1">Title</label>
+        </dt><!--
+        --><dd>  
+          <input type="text" name="example3_inp1" id="example3_imp1">
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <label for="example3_imp2">Name</label>
+        </dt><!--
+        --><dd>
+         <input type="text" name="exampl3_inp2" id="example3_imp2">
+        </dd>
+      </dl>
+    </div>
+
+    <h1>Mailing Address Form</h1>
+    <div class="styled_form">
+      <dl>
+        <dt>
+          <label for="name">Name</label>
+        </dt>
+        <dd>
+          <input type="text" id="name" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <label for="address1">Address</label>
+        </dt>
+        <dd>
+          <input type="text" id="address1" />
+          <input type="text" id="address2" />
+        </dd>
+      </dl>
+      <dl class="city partial">
+        <dt>
+          <label for="city">City</label>
+        </dt>
+        <dd>
+          <input type="text" id="city" />
+        </dd>
+      </dl><!--
+      --><dl class="state partial">
+        <dt>
+          <label for="state">State</label>
+        </dt>
+        <dd>
+          <select id="state">
+            <option>AK</option>
+            <option>AL</option>
+            <!-- rest of US states -->
+          </select>
+        </dd>
+      </dl><!--
+      --><dl class="zipcode partial">
+        <dt>
+          <label for="zipcode">Zip</label>
+        </dt>
+        <dd>
+          <input type="text" id="zipcode" />
+        </dd>
+      </dl>
+    </div>
+  </body>
+</html>

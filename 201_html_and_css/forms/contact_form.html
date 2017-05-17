@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Contact Form</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <form action="" method="post">
+      <fieldset>
+        <dl>
+          <dt>
+            <label for="f-name">First Name</label>
+          </dt>
+          <dd>
+            <input type="text" name="f-name" id="f-name">
+          </dd>
+          <dt>
+            <label for="l-name">Last Name</label>
+          </dt>
+          <dd>
+            <input type="text" name="l-name" id="l-name">
+          </dd>
+          <dt>
+            <label for="email">Email</label>
+          </dt>
+          <dd>
+            <input type="email" name="email" id="email" placeholder="example@domain.com">
+          </dd>
+          <dt>
+            <label for="city">City</label>
+          </dt>
+          <dd>
+            <input type="city" name="city" id="city">
+          </dd>
+          <dt>
+            <label for="state">State</label>
+          </dt>
+          <dd>
+            <select name="state">
+              <option>AK</option>
+              <option>AL</option>
+              <option>AR</option>
+              <option>AZ</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DC</option>
+              <option>DE</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>IA</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>MA</option>
+              <option>MD</option>
+              <option>ME</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MO</option>
+              <option>MS</option>
+              <option>MT</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>NE</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NV</option>
+              <option>NY</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VA</option>
+              <option>VT</option>
+              <option>WA</option>
+              <option>WI</option>
+              <option>WV</option>
+              <option>WY</option>
+            </select>
+          </dd>
+          <dt>
+            <label for="zipcode">Zip Code</label>
+          </dt>
+          <dd>
+            <input type="number" name="zipcode" id="zipcode" min="0" max="99999">
+          </dd>
+        </dl>
+        <p>Which of these colors do you most preer?</p>
+        <ul>
+          <li><input type="radio" name="fav-color" checked>Red</li>
+          <li><input type="radio" name="fav-color">Orange</li>
+          <li><input type="radio" name="fav-color">Yellow</li>
+          <li><input type="radio" name="fav-color">Green</li>
+          <li><input type="radio" name="fav-color">Blue</li>
+          <li><input type="radio" name="fav-color">Indigo</li>
+          <li><input type="radio" name="fav-color">Violet</li>
+        </ul>
+        <p>What web technologies do you want to hear more about?</p>
+        <ul>
+          <li><input type="checkbox" name="html">HTML</li>
+          <li><input type="checkbox" name="css">CSS</li>
+          <li><input type="checkbox" name="javascript">Javascript</li>
+          <li><input type="checkbox" name="ruby">Ruby</li>
+          <li><input type="checkbox" name="rails">Rails</li>
+        </ul>
+        <p>Comments</p>
+        <textarea name="comments" id="comments" cols="100" rows="5"></textarea>
+        <input type="submit" value="submit">
+        <input type="reset">
+      </fieldset>
+    </form>      
+  </body>  
+</html>

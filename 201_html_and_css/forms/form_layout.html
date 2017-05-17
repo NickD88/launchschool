@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Form Layouts</title>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        font: normal 14px Helvetica, arial, sans-serif;
+      }
+
+      /*POSITIONED VERTICALLY*/
+/*      label {
+        display: block;
+        padding-bottom: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        height: 40px;
+        padding: 0 8px;
+        margin-bottom: 10px;
+        font: normal 14px Helvetica, arial, sans-serif;
+        border: 1px solid #cecece;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }*/
+
+     
+      dl {
+        margin: 0;
+        padding-bottom: 20px;
+      }
+      dt {
+        padding-bottom: 10px;
+        vertical-align: middle;
+        box-sizing: border-box;
+      }
+      dd {
+        width: 100%;
+        margin: 0;
+      }
+
+      input[type="text"] {
+        height: 40px;
+        width: 100%;
+        padding: 0 8px;
+        font: normal 14px Helvetica, arial, sans-serif;
+        border: 1px solid #cecece;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="text"] + input[type="text"] {
+        margin-top: 10px;
+      }
+
+      select {
+        width: 100%;
+        height: 40px;
+        padding: 0 8px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: white;
+        border: 1px solid #cecece;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      dl.partial {
+        display: inline-block;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+      dl.city {
+        width: 50%;
+      }
+
+      dl.state {
+        width: 25%;
+      }
+
+      dl.zipcode {
+        width: 25%;
+        padding-right: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form action="" method="post">
+      <dl>
+        <dt>
+          <label for="name">Your Name</label>
+        </dt>
+        <dd>
+          <input type="text" name="name" id="name">
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <label for="address1">Address</label>
+        </dt>
+        <dd>
+          <input type="text" name="address1" id="address1">
+          <input type="text" name="address2">
+        </dd>
+      </dl>
+      <dl class="city partial">
+        <dt>
+          <label for="city">City</label>
+        </dt>
+        <dd>
+          <input type="text" name="city" id="city">
+        </dd>
+      </dl><!--
+      --><dl class="state partial">
+        <dt>
+          <label for="state">State</label>
+        </dt>
+        <dd>
+          <select name="state" id="state">
+            <option value="AK">AK</option>
+            <option value="AL">AL</option>
+          </select>
+        </dd>
+      </dl><!--
+      --><dl class="zipcode partial">
+        <dt>
+          <label for="zipcode">Zipcode</label>
+        </dt>
+        <dd>
+          <input type="text" name="zipcode" id="zipcode">
+        </dd>
+      </dl>
+    </form>
+
+  </body>
+</html>

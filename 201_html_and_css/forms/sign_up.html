@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Sign Up Form</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="sign_up.css">
+  </head>
+  <body>
+    <form action="" method="post">
+      <h1>Create Your Profile</h1>
+      <fieldset>
+        <h2>Personal Info</h2>
+        <dl>
+          <dt>
+            <label for="first-name">Your Name</label>
+          </dt>
+          <dd>
+            <input type="text" name="first-name" id="first-name" placeholder="First">
+            <input type="text" name="last-name" id="last-name" placeholder="Last">
+          <dd>
+          <dt>
+            <label for="email">Email</label>
+          </dt>
+          <dd>
+            <input type="email" name="email" id="email">
+          </dd>
+      </fieldset>
+      <fieldset>
+        <h2>Social Media Accounts</h2>
+        <dl class="partial three-column">
+          <dt>
+            <label for="social-facebook">Facebook</label>
+          </dt>
+          <dd>
+            <input type="text" name="social-facebook" id="social-facebook">
+          </dd>
+        </dl><!--
+        --><dl class="partial three-column">
+          <dt>
+            <label for="social-twitter">Twitter</label>
+          </dt>
+          <dd>
+            <input type="text" name="social-twitter" id="social-twitter">
+          </dd>
+        </dl><!--
+        --><dl class="partial three-column last-element">
+          <dt>
+            <label for="social-linkedin">Linkedin</label>
+          </dt>
+          <dd>
+            <input type="text" name="social-linkedin" id="social-linkedin">
+          </dd>
+        </dl>
+      </fieldset>
+      <fieldset>
+        <h2>Account Info</h2>
+        <dl>
+          <dt>
+            <label for="profile">Profile Name</label>
+          </dt>
+          <dd>
+            <input type="text" id="profile" name="profile">
+          </dd>
+        </dl>
+        <dl class="partial two-column">
+          <dt>
+            <label for="password">Password</label>
+          </dt>
+          <dd>
+            <input type="password" id="password" name="password">
+          </dd>
+        </dl><!--
+        --><dl class="partial two-column last-element">
+          <dt>
+            <label for="conf-password">Confirm Password</label>
+          </dt>
+          <dd>
+            <input type="password" id="conf-password" name="conf-password">
+          </dd>
+        </dl>
+      </fieldset>
+      <fieldset>
+        <label for="bio"><h2>Bio</h2></label>
+        <textarea name="bio" id="bio" cols="80" rows="10"></textarea>
+      </fieldset>
+      <fieldset>
+        <label class="checkbox">
+          <input type="checkbox" value="agreed">
+          I agree to treat other users with respect, and will not say anything at all if I have nothing nice to say.
+        </label>
+        <input type="submit" value="Create Account">
+      </fieldset>
+    </form>
+  </body>
+</html>

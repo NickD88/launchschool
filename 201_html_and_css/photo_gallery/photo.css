@@ -1,0 +1,60 @@
+@import "reset.css";
+
+body {
+  background: #0f0f0f;
+}
+
+main {
+  min-width: 600px;
+  max-width: 1000px;
+  background: #262626;
+  margin: 0 auto;
+  padding: 25px 20px 20px 20px;
+}
+
+h1 {
+  font: bold 24px Helvetica, arial, sans-serif;
+  color: #EAEBEB;
+  text-align: center;
+  padding: 20px 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figure {
+  padding: 0 0 30px 0;
+}
+
+figure img {
+  width: 100%;
+  border: 10px solid #fff;
+  box-sizing: border-box;
+}
+
+figure figcaption {
+  font: normal 14px Helvetica, arial, sans-serif;
+  color: #EAEBEB;
+  padding: 10px 0 0 0;
+}
+
+ul {
+  margin: 0 -15px;
+}
+
+
+ul li {
+  display: inline-block;
+  width: 25%;
+  padding: 0 15px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+ul img {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+}

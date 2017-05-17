@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CSS Positioning</title>
+    <meta charset="UTF-8">
+    <style>
+      #positioned {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        margin-left: -200px;
+        padding: 30px 15px;
+        background: white;
+        width: 400px;
+        z-index: 2;
+      }
+
+      section {
+        border: 10px solid gray;
+      }
+
+      #overlap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        background: rgba(0, 0, 0, .6);
+      }
+
+      #positioned span {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 20px;
+        height: 20px;
+        background: #fcfc99;
+
+      }
+    
+    </style>
+  </head>
+  <body>
+    <section>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non luctus est. Nam arcu odio, lobortis sit amet erat finibus, imperdiet facilisis tortor. Praesent dictum aliquam metus, in condimentum sem. Sed ultrices ornare metus at ultrices. Ut ut ligula sit amet metus lobortis porttitor. Integer eget ultrices libero. Donec eu turpis dapibus, suscipit libero quis, blandit urna. Cras quis felis congue, sodales ante vitae, sodales leo. Proin mattis consequat elementum. In hac habitasse platea dictumst. Etiam consequat scelerisque faucibus. Cras hendrerit eleifend ligula, vel interdum arcu bibendum ac. Duis volutpat lacus vitae lacus tincidunt, ac lobortis ex pulvinar. Cras pellentesque nulla dolor, sed ullamcorper nibh porttitor at. Cras nisi sapien, fringilla accumsan gravida ut, pharetra rutrum metus.</p>
+      <p>Integer at sem dolor. Maecenas laoreet dignissim ante, vitae congue nisi eleifend sed. Praesent porta egestas massa ut placerat. Nulla viverra iaculis venenatis. Donec volutpat turpis ut urna rutrum, id aliquam magna dignissim. Suspendisse luctus a quam dictum auctor. Quisque vel quam a dolor tincidunt volutpat. Nam scelerisque eu metus ut facilisis. Nam feugiat augue id diam sollicitudin, quis feugiat risus auctor. In sollicitudin leo sed lectus sagittis interdum quis vel nulla. Mauris iaculis, sapien at eleifend pellentesque, augue sem tempor lorem, quis ornare dolor neque ac velit. Duis quis mi ligula. Vivamus ornare elementum ipsum. Donec vitae sollicitudin erat.</p>
+      <p>Morbi ultricies massa vel odio porttitor mattis. Donec eleifend rutrum dapibus. Phasellus laoreet risus non pharetra varius. Integer consectetur ex urna, sit amet euismod felis molestie eu. Vestibulum bibendum purus sit amet tellus venenatis ornare. Nullam quis ultrices mauris. Suspendisse ullamcorper lectus facilisis quam imperdiet laoreet. Suspendisse eu nisi sem. Cras et tincidunt tortor. Nam nec justo feugiat, aliquam augue ut, cursus elit. Ut quis ullamcorper purus, id pulvinar enim.</p>
+    </section>
+    <div id="positioned">
+      <p>I'm positioned!</p>
+      <span></span>
+    </div>
+    <div id="overlap"></div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+@import "reset.css";
+
+main {
+  width: 500px;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  border: 2px solid #000;
+  font: normal 24px Helvetica, Arial, sans-serif;
+}
+
+header {
+  border-bottom: 5px solid #000;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2 {
+  border-top: 10px solid #000;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #111;
+}
+
+header dl {
+  width: 50%
+}
+
+dl {
+  display: inline-block;
+}
+
+dt, dd {
+  display: inline-block;
+}
+
+dl + dl {
+  text-align: right;
+}
+
+dl + dl dt {
+  font-weight: normal
+}
+
+dt {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: right;
+  font-weight: bold;
+}
+
+tbody tr {
+  border-top: 1px solid #111;
+  padding: 20px 0;
+}
+
+td:last-of-type {
+  text-align: right;
+}
+
+td.indented {
+  padding-left: 25px;
+  border-top: none;
+}
+
+td.indented dt {
+  font-weight: normal;
+}
+
+tr.table-seperator {
+  border-top: 10px solid #000;
+}
+
+.footer-align td {
+  border-top: 1px solid #111;
+  padding: 10px 0 10px 14px;
+  font-size: 20px;
+  text-align: left;
+  text-indent: -14px;
+}
+
+table + table th {
+  font-weight: normal;
+  font-size: 20px;
+  border-bottom: 1px solid #111;
+  padding: 0 0 5px 0;
+  text-align: left;
+}
+
+table + table tr {
+  font-size: 20px;
+}
